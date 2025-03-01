@@ -28,3 +28,9 @@ class Orders(models.Model):
         from django.urls import reverse
 
         return reverse('one_order', kwargs={'order_id':self.pk})
+    
+    class Meta:
+        db_table = 'Orders'
+        db_table_comment = 'Table for orders'
+        ordering = ['id']
+        indexes = [models.Index(fields=['id'], name = 'idx_order_pk')]
