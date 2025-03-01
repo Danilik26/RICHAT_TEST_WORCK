@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Orders',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID', db_index = True)),
                 ('all_price', models.DecimalField(db_default=0, decimal_places=2, default=0, max_digits=10)),
                 ('items', models.ManyToManyField(to='items.items')),
             ],
