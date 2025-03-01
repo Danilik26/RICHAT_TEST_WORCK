@@ -22,7 +22,6 @@ class MakeStripeSessionForOneItem(APIView):
         item = Items.objects.get(pk = item_id)
         item_curency = item.currency
         stripe.api_key = STRIPE_SECRET_KEY
-
         if item_curency == Items.CHOICES_USD:
             session = stripe.checkout.Session.create(
                 line_items=[
@@ -75,7 +74,7 @@ class MakeStripeSessionForOrder(APIView):
                     "price_data" :{
                         'currency':'usd',
                         'product_data':{
-                            'name':order.pk
+                            'name':f'order id -> {order.pk}' 
                         },
                         'unit_amount':int(order.all_price)*100,
                     },
