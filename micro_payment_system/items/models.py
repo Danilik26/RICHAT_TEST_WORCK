@@ -22,3 +22,9 @@ class Items(models.Model):
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('one_item', kwargs={"item_id":self.pk})
+    
+    class Meta:
+        db_table = 'Items'
+        db_table_comment = 'Table for items'
+        ordering = ['id']
+        indexes = [models.Index(fields=['id'], name = 'idx_item_pk')]
