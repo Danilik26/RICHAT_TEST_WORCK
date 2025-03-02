@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 
 # Application definition
@@ -78,7 +78,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'micro_payment_system.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -89,13 +88,26 @@ DATABASES = {
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # },
 
+    # For connect to local
+
+    # 'default': {
+    #     'ENGINE':'django.db.backends.postgresql',
+    #     'NAME':str(os.environ.get("DB_NAME")),
+    #     'USER':str(os.environ.get("DB_USER")),
+    #     'PASSWORD':str(os.environ.get("DB_PASSWORD")),
+    #     'HOST':str(os.environ.get('DB_HOST')),
+    #     'PORT':str(os.environ.get('DB_PORT')),
+    # },
+
+    # For connect in container
+
     'default': {
         'ENGINE':'django.db.backends.postgresql',
-        'NAME': str(os.environ.get("DB_NAME")),
-        'USER': str(os.environ.get("DB_USER_NAME")),
-        'PASSWORD': str(os.environ.get("DB_PASSWORD")),
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': str(os.environ.get("DB_NAME_DOCKER")),
+        'USER': str(os.environ.get("DB_USER_NAME_DOCKER")),
+        'PASSWORD': str(os.environ.get("DB_PASSWORD_DOCKER")),
+        'HOST': str(os.environ.get('DB_HOST_DOCKER')),
+        'PORT': str(os.environ.get('DB_PORT_DOCKER')),
     }
 }
 
