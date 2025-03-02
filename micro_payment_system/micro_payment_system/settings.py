@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'items',
     'orders',
     'stripe_api',
+    'create_start_data'
 ]
 
 MIDDLEWARE = [
