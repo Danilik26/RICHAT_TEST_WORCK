@@ -7,8 +7,6 @@ class Orders(models.Model):
 
     items = models.ManyToManyField(Items)
 
-    all_price = models.DecimalField(max_digits = 10, decimal_places = 2, default = 0, db_default = 0)
-
     def __conversion_dirham_to_dollar(self, price):
         return price * 3.67
 
@@ -21,8 +19,7 @@ class Orders(models.Model):
                 item.price = self.__conversion_dirham_to_dollar(float(item.price))
 
             all_price += float(item.price)
-        self.all_price = all_price
-        return self.all_price
+        return all_price
 
     def get_absolute_url(self):
         from django.urls import reverse
