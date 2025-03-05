@@ -11,3 +11,10 @@ launch on the local machine occurs through the standard Django server, you can c
 there is a docker-compoze assembly, postgresql was used as a database
 
 There is also one unit test in the orders application
+
+URLs
+/items/ <- show_all_items
+/item/<int:item_id> <- show one item
+/oredrs/ <- show all orders
+/orders/one_order/<int:order_id>/ <- show one order
+/start_data/ <- create start data
